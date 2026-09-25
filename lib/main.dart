@@ -1,79 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:device_frame/device_frame.dart';
+import 'login_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MiPrimeraVozApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MiPrimeraVozApp extends StatelessWidget {
+  const MiPrimeraVozApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Mi Primera App',
+      title: 'Mi Primera Voz',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      // Envolvemos la app dentro del contenedor del marco de la tablet
-      home: Scaffold(
-        backgroundColor: const Color(0xFF1E1E1E), // Fondo oscuro elegante
-        body: Center(
-          child: DeviceFrame(
-            device: Devices.ios.iPad, // Muestra el marco real de una tablet
-            isFrameVisible: true,
-            orientation: Orientation.landscape, // Modo horizontal (puedes cambiarlo a .portrait)
-            screen: const MyHomePage(title: 'Flutter Demo Home Page'),
-          ),
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF7C5CFF),
         ),
       ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      home: const LoginScreen(),
     );
   }
 }
